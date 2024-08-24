@@ -1,9 +1,6 @@
 fn main() {
-    let x = five();
-
-    println!("The value of x is: {x}"); 
-}
-
-fn five() -> u8 {
-    5
+    for number in (1..5).rev() {
+        println!("{number}!");
+    }
+    println!("LIFTOFF!!!");
 }
