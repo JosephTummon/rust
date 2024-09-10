@@ -1,7 +1,11 @@
 fn main() {
-    let s1 = String::from("Hello, ");
-    let s2 = String::from("world!");
-    let s3 = format!("{}-{}-{}", s1, s2, s2); // note s1 has been moved here and can no longer be used
+    use std::collections::HashMap;
 
-    println!("{}, \n{},\n {}", s1, s2, s3);
+    let field_name = String::from("Favorite color");
+    let field_value = String::from("Blue");
+
+    let mut map = HashMap::new();
+    map.insert(field_name.clone(), field_value);
+
+    println!("{}", field_name);
 }
