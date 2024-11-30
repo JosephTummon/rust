@@ -1,41 +1,17 @@
-use std::collections::HashMap;
-
-fn median_and_mode(nums: Vec<i32>) -> (f32, i32) {
-    // Check if the list is empty
-    if nums.is_empty() {
-        panic!("The list of numbers is empty!");
-    }
-
-    // Median calculation
-    let mut sorted_nums = nums.clone();
-    sorted_nums.sort(); // Sort the numbers
-    let len = sorted_nums.len();
-    let median: f32 = if len % 2 == 0 {
-        // If even, take the average of the two middle numbers
-        (sorted_nums[len / 2 - 1] + sorted_nums[len / 2]) as f32 / 2.0
-    } else {
-        // If odd, take the middle number
-        sorted_nums[len / 2] as f32
-    };
-
-    // Mode calculation
-    let mut occurrences = HashMap::new();
-    for &num in &nums {
-        *occurrences.entry(num).or_insert(0) += 1;
-    }
-
-    let mode = occurrences
-        .into_iter()
-        .max_by_key(|&(_, count)| count)
-        .map(|(num, _)| num)
-        .expect("Cannot compute mode for an empty list");
-
-    (median, mode)
-}
+// Convert strings to pig latin. The first consonant of each word is moved to the end of the word and ay is added,
+//  so first becomes irst-fay. Words that start with a vowel have hay added to the end instead (apple becomes apple-hay).
+//  Keep in mind the details about UTF-8 encoding!
 
 fn main() {
-    let numbers = vec![3, 1, 2, 3, 4, 5, 3];
-    let (median, mode) = median_and_mode(numbers);
-    println!("Median: {}", median);
-    println!("Mode: {}", mode);
+    let string = String::from("This will be the string I edit.");
+    println!("{}", string);
+    to_pig_latin(&string);
+    println!("{}", string);
+}
+
+fn to_pig_latin(string: &String) -> &String {
+    for word in string.chars() {
+        println!("{word}");
+    }
+    &string
 }
